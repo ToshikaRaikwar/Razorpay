@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
   const [page] = useState({
@@ -23,6 +24,8 @@ function App() {
     ],
   });
 
+  const navigate = useNavigate();
+
   const initPayment = async (data) => {
     const options = {
       key: 'rzp_test_RHkbnq3KbCLC6C',
@@ -32,7 +35,7 @@ function App() {
       order_id: data.id,
       handler: async (response) => {
         try {
-          const verifyUrl = 'http://localhost:8080/api/payment/verify';
+          const verifyUrl = 'http://localhost:8080/';
           const { data } = await axios.post(verifyUrl, response);
           console.log(data);
         } catch (error) {
@@ -43,14 +46,18 @@ function App() {
         color: '#3399cc',
       },
     };
-  
+
     const rzp = new window.Razorpay(options);
     rzp.on('payment.failed', function (response) {
       console.log(response.error.description);
     });
     rzp.open();
   };
-  
+
+  const handleGoBack = () => {
+    navigate(-1); // Navigate to the previous page
+  };
+
   const handlePayment = async (price) => {
     if (price === 0) {
       console.log("Free option selected. No payment required.");
@@ -58,7 +65,7 @@ function App() {
       return;
     }
     try {
-      const orderUrl = 'http://localhost:8080/api/payment/orders';
+      const orderUrl = 'http://localhost:8080/';
       const { data } = await axios.post(orderUrl, { amount: price });
       console.log(data);
       initPayment(data.data);
@@ -68,6 +75,12 @@ function App() {
   };
 
   return (
+  <div>
+
+  
+<button className="back_btn" onClick={handleGoBack}>
+        Go Back
+      </button>
     <div className="App">
       <div className="page-container">
         {page.options.map((option, index) => (
@@ -83,7 +96,8 @@ function App() {
           </div>
         ))}
       </div>
-    </div>
+     
+    </div></div>
   );
 }
 
