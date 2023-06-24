@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 
 function App() {
-  const [page, setPage] = useState({
+  const [page] = useState({
     options: [
       {
         name: 'Free',
