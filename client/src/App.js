@@ -35,7 +35,7 @@ function App() {
       order_id: data.id,
       handler: async (response) => {
         try {
-          const verifyUrl = 'https://razorpay-mernstack.onrender.com/';
+          const verifyUrl = 'https://razorpay-mernstack.onrender.com';
           const { data } = await axios.post(verifyUrl, response);
           console.log(data);
         } catch (error) {
