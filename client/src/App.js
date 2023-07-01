@@ -48,7 +48,7 @@ function App() {
     };
 
     const rzp = new window.Razorpay(options);
-    rzp.on('payment.failed', function (response) { 
+    rzp.on('payment.failed', function (response) {
       console.log(response.error.description);
     });
     rzp.open();
