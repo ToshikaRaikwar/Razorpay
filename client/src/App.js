@@ -37,6 +37,7 @@ function App() {
         try {
           const verifyUrl = 'https://razorpay-mernstack.onrender.com/api/payment/verify';
           const { data } = await axios.post(verifyUrl, response);
+          
           console.log(data);
         } catch (error) {
           console.log(error);
