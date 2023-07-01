@@ -37,7 +37,6 @@ function App() {
         try {
           const verifyUrl = 'https://razorpay-mernstack.onrender.com/api/payment/verify';
           const { data } = await axios.post(verifyUrl, response);
-          
           console.log(data);
         } catch (error) {
           console.log(error);
@@ -49,7 +48,7 @@ function App() {
     };
 
     const rzp = new window.Razorpay(options);
-    rzp.on('payment.failed', function (response) {
+    rzp.on('payment.failed', function (response) { 
       console.log(response.error.description);
     });
     rzp.open();
