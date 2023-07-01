@@ -37,6 +37,11 @@ router.post("/orders", async (req, res) => {
   }
 });
 
+router.get("/verify", (req, res) => {
+  // Handle the GET request for /api/payment/verify here
+  res.send("This is the GET /api/payment/verify endpoint");
+});
+
 router.post("/verify", async (req, res) => {
   try {
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
