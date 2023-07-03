@@ -31,7 +31,7 @@ function App() {
       key: 'rzp_test_RHkbnq3KbCLC6C',
       amount: data.amount.toString(),
       currency: data.currency,
-      name: 'Offers',
+      name: 'Offers', // Replace with your product name
       order_id: data.id,
       handler: async (response) => {
         try {
@@ -55,7 +55,7 @@ function App() {
   };
 
   const handleGoBack = () => {
-    navigate(-1); 
+    navigate(-1); // Navigate to the previous page
   };
 
   const handlePayment = async (price) => {
